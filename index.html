@@ -46,7 +46,7 @@
 
         .bouton-acces p {
             margin: 0;
-            color:#dbd4cc
+            color: #dbd4cc
         }
 
         .cartes {
@@ -125,31 +125,61 @@
 
 
     <script>
+        if (localStorage.getItem("secure") === null) {
+            localStorage.setItem("secure", "null");
+        }
+
+        function mdp() {
+            const password = "HeaC14N16Kiss";
+
+            const input = prompt("Mot de passe ?");
+
+            if (input === password) {
+                localStorage.setItem("secure", "true");
+                return true;
+            }
+
+            return false;
+        }
+
         const liste = [1, 2, 3];
         let index = 0;
-        const bouton = liste[index];
+        let bouton = liste[index];
         switcher = document.getElementById("texte");
         switcher.textContent = "Accès aux jeux";
 
+        let info = "jeu";
+
         function switchMode() {
-            dico = {
-                1: ["jeu", "Accès aux jeux"],
-                2: ["git", "Accès à GitHub"],
-                3: ["render", "Accès à Render"]
-            };
+            if (localStorage.getItem("secure") === "true") {
+                dico = {
+                    1: ["jeu", "Accès aux jeux"],
+                    2: ["git", "Accès à GitHub"],
+                    3: ["render", "Accès à Render"]
+                };
 
-            index = (index + 1) % liste.length;
-            bouton = liste[index];
+                index = (index + 1) % liste.length;
+                bouton = liste[index];
 
-            switcher.textContent = dico[bouton];
+                switcher.textContent = dico[bouton][1];
+                info = dico[bouton][0];
+                console.log("rien");
 
-            console.log("rien");
-
+            }
+            else {
+                mdp();
+            }
         }
 
 
         function LoupGarou() {
-            window.location.href = "https://loup-garou-p6u4.onrender.com/";
+            if (info === "jeu") {
+                window.location.href = "https://loup-garou-p6u4.onrender.com/";
+            } else if (info === "git") {
+                window.location.href = "https://github.com/Sam-0192/Loup_Garou";
+            } else {
+                window.location.href = "https://dashboard.render.com/web/srv-d9i018epbkes739rqi7g";
+            }
         }
 
         function Uno() {

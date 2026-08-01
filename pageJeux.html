@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: #dbd4cc;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            position: fixed;
+            /* ou relative si tu ne veux pas qu'il reste en haut */
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 15vh;
+
+            background: #0f3b59;
+            border-radius: 0 0 10px 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .bouton-acces {
+            position: absolute;
+            right: 20px;
+
+            background: #3e251e;
+            border-radius: 8px;
+
+            padding: 8px 15px;
+        }
+
+        .bouton-acces p {
+            margin: 0;
+            color:#dbd4cc
+        }
+
+        .cartes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            padding-left: 100px;
+        }
+
+        .carte {
+            width: 170px;
+            aspect-ratio: 10/11;
+
+            /* background: #B1423E; */
+            background: #dba12c;
+            border-radius: 10px;
+
+            padding: 12px;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .carte img {
+            width: 100%;
+            height: 150px;
+
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .carte h3 {
+            margin: 12px 0 0;
+            text-align: center;
+            color: #F7FEEB;
+
+            /* Empêche un titre plus long d'agrandir la carte */
+            height: 2.5em;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Samuel's GAMES</h1>
+
+        <div class="bouton-acces" onclick="switchMode()">
+            <p id="texte">Accès aux jeux</p>
+        </div>
+    </header>
+
+    <br><br><br><br><br><br><br><br>
+    <div class="cartes">
+        <div class="carte" onclick="LoupGarou()">
+            <div id="loup_garou">
+                <img src="static/resources/images/loup_garou.jpg" alt="Loup Garou">
+            </div>
+
+            <h3>Loup Garou</h3>
+        </div>
+        <div class="carte" onclick="Uno()">
+            <div id="loup_garou">
+                <img src="static/resources/images/uno_card.png" alt="Loup Garou">
+            </div>
+
+            <h3>UNO</h3>
+        </div>
+    </div>
+
+
+    <script>
+        const liste = [1, 2, 3];
+        let index = 0;
+        const bouton = liste[index];
+        switcher = document.getElementById("texte");
+        switcher.textContent = "Accès aux jeux";
+
+        function switchMode() {
+            dico = {
+                1: ["jeu", "Accès aux jeux"],
+                2: ["git", "Accès à GitHub"],
+                3: ["render", "Accès à Render"]
+            };
+
+            index = (index + 1) % liste.length;
+            bouton = liste[index];
+
+            switcher.textContent = dico[bouton];
+
+            console.log("rien");
+
+        }
+
+
+        function LoupGarou() {
+            window.location.href = "https://loup-garou-p6u4.onrender.com/";
+        }
+
+        function Uno() {
+            console.log("UNOOOOO");
+            alert("UNO");
+        }
+    </script>
+</body>

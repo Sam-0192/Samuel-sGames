@@ -6,11 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
+        /* =========================
+           GÉNÉRAL
+           ========================= */
+
         body {
             background: #dbd4cc;
             margin: 0;
             padding: 0;
         }
+
+
+        /* =========================
+           HEADER
+           ========================= */
 
         header {
             position: fixed;
@@ -35,6 +44,7 @@
             color: #F7FEEB;
         }
 
+
         /* =========================
            BOUTON SCHOOL
            ========================= */
@@ -56,6 +66,7 @@
             margin: 0;
             color: #dbd4cc;
         }
+
 
         /* =========================
            BOUTON ACCÈS
@@ -79,8 +90,9 @@
             color: #dbd4cc;
         }
 
+
         /* =========================
-           CARTES
+           CARTES DES JEUX
            ========================= */
 
         .cartes {
@@ -130,6 +142,7 @@
             align-items: center;
         }
 
+
         /* =========================
            PAGE SCHOOL
            ========================= */
@@ -140,36 +153,10 @@
             background: #dbd4cc;
         }
 
-        .school-content {
-            padding-top: calc(15vh + 40px);
-            padding-left: 100px;
-            padding-right: 100px;
-            padding-bottom: 50px;
-        }
 
-        .school-image {
-            width: min(800px, 90vw);
-            max-height: 70vh;
-
-            object-fit: contain;
-
-            display: block;
-
-            border-radius: 10px;
-
-            cursor: pointer;
-
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-
-            background: #dba12c;
-
-            padding: 12px;
-            box-sizing: border-box;
-        }
-
-        .school-image:hover {
-            transform: scale(1.01);
-        }
+        /* =========================
+           BOUTON RETOUR
+           ========================= */
 
         .retour {
             position: absolute;
@@ -188,45 +175,168 @@
             margin: 0;
             color: #dbd4cc;
         }
+
+
+        /* =========================
+           SECTION ENGLISH
+           ========================= */
+
+        .english-section {
+            max-width: 1000px;
+
+            margin: 0 auto;
+
+            padding-top: calc(15vh + 45px);
+            padding-bottom: 60px;
+        }
+
+        .english-section h2 {
+            margin: 0 0 25px;
+
+            color: #0f3b59;
+
+            font-size: 32px;
+        }
+
+        .english-article {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .english-article img {
+            width: min(800px, 100%);
+            height: auto;
+
+            display: block;
+
+            border-radius: 10px;
+        }
+
+        .english-article a {
+            margin-top: 15px;
+
+            color: #0f3b59;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            text-decoration: none;
+
+            border-bottom: 2px solid #0f3b59;
+
+            padding-bottom: 3px;
+        }
+
+        .english-article a:hover {
+            opacity: 0.7;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 700px) {
+
+            .cartes {
+                padding-left: 20px;
+                padding-right: 20px;
+
+                justify-content: center;
+            }
+
+            .english-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .bouton-school,
+            .bouton-acces,
+            .retour {
+                padding: 7px 10px;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- =========================
+
+    <!-- =====================================================
          PAGE PRINCIPALE
-         ========================= -->
+         ===================================================== -->
 
     <div id="mainPage">
 
         <header>
+
+            <!-- Bouton School -->
             <div class="bouton-school" onclick="openSchool()">
                 <p>School</p>
             </div>
 
+            <!-- Titre -->
             <h1>Samuel's GAMES</h1>
 
+            <!-- Bouton accès -->
             <div class="bouton-acces" onclick="switchMode()">
                 <p id="texte">Accès aux jeux</p>
             </div>
+
         </header>
+
+
+        <!-- Jeux -->
 
         <div class="cartes">
 
-            <div class="carte" onclick="LoupGarou()" title="Nombre de lignes : ...">
+            <!-- Loup Garou -->
+
+            <div
+                class="carte"
+                onclick="LoupGarou()"
+                title="Nombre de lignes : ..."
+            >
+
                 <div id="loup_garou">
-                    <img src="rsc/images/loup_garou.jpg" alt="Loup Garou">
+
+                    <img
+                        src="rsc/images/loup_garou.jpg"
+                        alt="Loup Garou"
+                    >
+
                 </div>
 
                 <h3>Loup Garou</h3>
+
             </div>
 
-            <div class="carte" onclick="Uno()">
+
+            <!-- UNO -->
+
+            <div
+                class="carte"
+                onclick="Uno()"
+            >
+
                 <div id="uno">
-                    <img src="rsc/images/uno_card.png" alt="UNO">
+
+                    <img
+                        src="rsc/images/uno_card.png"
+                        alt="UNO"
+                    >
+
                 </div>
 
                 <h3>UNO</h3>
+
             </div>
 
         </div>
@@ -234,43 +344,86 @@
     </div>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          PAGE SCHOOL
-         ========================= -->
+         ===================================================== -->
 
     <div id="schoolPage">
 
+
+        <!-- Header School -->
+
         <header>
-            <div class="retour" onclick="closeSchool()">
+
+            <div
+                class="retour"
+                onclick="closeSchool()"
+            >
                 <p>← Retour</p>
             </div>
 
             <h1>Samuel's SCHOOL</h1>
+
         </header>
 
-        <div class="school-content">
 
-            <img
-                class="school-image"
-                src="https://cdn.unitycms.io/images/EMxPnVuTaKc8UeYSHIM8iE.jpg?op=ocroped&val=800"
-                alt="School"
-                onclick="fullscreenImage(this)"
-            >
 
-        </div>
+        <!-- =================================================
+             ENGLISH
+             ================================================= -->
+
+        <section class="english-section">
+
+            <h2>🇬🇧 English</h2>
+
+
+            <div class="english-article">
+
+
+                <!-- Photo -->
+
+                <img
+                    src="https://cdn.unitycms.io/images/EMxPnVuTaKc8UeYSHIM8iE.jpg?op=ocroped&val=800"
+                    alt="Wildfires in Gironde"
+                >
+
+
+                <!-- Article -->
+
+                <a
+                    href="https://www.tdg.ch/la-gironde-brule-et-les-touristes-fuient-961060071403"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Read the article →
+                </a>
+
+            </div>
+
+        </section>
 
     </div>
 
 
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
     <script>
 
-        /* =========================
-           SÉCURITÉ / ACCÈS AUX JEUX
-           ========================= */
+
+        /* =================================================
+           SÉCURITÉ POUR LES JEUX
+           ================================================= */
 
         if (localStorage.getItem("secure") === null) {
+
             localStorage.setItem("secure", "null");
+
         }
+
 
         function mdp() {
 
@@ -278,74 +431,71 @@
 
             const input = prompt("Mot de passe ?");
 
+
             if (input === password) {
+
                 localStorage.setItem("secure", "true");
+
                 return true;
+
             }
 
+
             return false;
+
         }
 
 
-        /* =========================
-           ACCÈS SCHOOL
-           ========================= */
+
+        /* =================================================
+           SCHOOL
+           ================================================= */
 
         function openSchool() {
 
             const password = prompt("Mot de passe School ?");
 
+
             if (password === "INDreb3bellion") {
 
                 document.getElementById("mainPage").style.display = "none";
+
                 document.getElementById("schoolPage").style.display = "block";
 
                 window.scrollTo(0, 0);
 
-            } else if (password !== null) {
+            }
+
+            else if (password !== null) {
 
                 alert("Mot de passe incorrect.");
 
             }
+
         }
+
 
 
         function closeSchool() {
 
             document.getElementById("schoolPage").style.display = "none";
+
             document.getElementById("mainPage").style.display = "block";
 
             window.scrollTo(0, 0);
+
         }
 
 
-        /* =========================
-           PLEIN ÉCRAN DE L'IMAGE
-           ========================= */
 
-        function fullscreenImage(image) {
-
-            if (image.requestFullscreen) {
-                image.requestFullscreen();
-            }
-
-            else if (image.webkitRequestFullscreen) {
-                image.webkitRequestFullscreen();
-            }
-
-            else if (image.msRequestFullscreen) {
-                image.msRequestFullscreen();
-            }
-        }
-
-
-        /* =========================
-           ACCÈS / MODES
-           ========================= */
+        /* =================================================
+           MODES D'ACCÈS
+           ================================================= */
 
         const liste = [1, 2, 3];
 
         let index = 0;
+
         let bouton = liste[index];
 
         const switcher = document.getElementById("texte");
@@ -355,22 +505,34 @@
         let info = "jeu";
 
 
+
         function switchMode() {
 
             if (localStorage.getItem("secure") === "true") {
 
+
                 const dico = {
+
                     1: ["jeu", "Accès aux jeux"],
+
                     2: ["git", "Accès à GitHub"],
+
                     3: ["render", "Accès à Render"]
+
                 };
 
+
                 index = (index + 1) % liste.length;
+
                 bouton = liste[index];
 
-                switcher.textContent = dico[bouton][1];
 
-                info = dico[bouton][0];
+                switcher.textContent =
+                    dico[bouton][1];
+
+
+                info =
+                    dico[bouton][0];
 
             }
 
@@ -379,12 +541,14 @@
                 mdp();
 
             }
+
         }
 
 
-        /* =========================
-           JEUX
-           ========================= */
+
+        /* =================================================
+           LOUP GAROU
+           ================================================= */
 
         function LoupGarou() {
 
@@ -393,19 +557,29 @@
                 window.location.href =
                     "https://loup-garou-p6u4.onrender.com/";
 
-            } else if (info === "git") {
+            }
+
+            else if (info === "git") {
 
                 window.location.href =
                     "https://github.com/Sam-0192/Loup_Garou";
 
-            } else {
+            }
+
+            else {
 
                 window.location.href =
                     "https://dashboard.render.com/web/srv-d9i018epbkes739rqi7g";
 
             }
+
         }
 
+
+
+        /* =================================================
+           UNO
+           ================================================= */
 
         function Uno() {
 

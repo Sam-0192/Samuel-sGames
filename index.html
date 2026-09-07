@@ -1,21 +1,19 @@
+```html
 <!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
         body {
             background: #dbd4cc;
-        }
-
-        body {
             margin: 0;
             padding: 0;
         }
 
         header {
             position: fixed;
-            /* ou relative si tu ne veux pas qu'il reste en haut */
             top: 0;
             left: 0;
             right: 0;
@@ -28,11 +26,40 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            z-index: 10;
         }
 
         header h1 {
             margin: 0;
+            color: #F7FEEB;
         }
+
+        /* =========================
+           BOUTON SCHOOL
+           ========================= */
+
+        .bouton-school {
+            position: absolute;
+            left: 20px;
+
+            background: #3e251e;
+            border-radius: 8px;
+
+            padding: 8px 15px;
+
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .bouton-school p {
+            margin: 0;
+            color: #dbd4cc;
+        }
+
+        /* =========================
+           BOUTON ACCÈS
+           ========================= */
 
         .bouton-acces {
             position: absolute;
@@ -42,12 +69,19 @@
             border-radius: 8px;
 
             padding: 8px 15px;
+
+            cursor: pointer;
+            user-select: none;
         }
 
         .bouton-acces p {
             margin: 0;
-            color: #dbd4cc
+            color: #dbd4cc;
         }
+
+        /* =========================
+           CARTES
+           ========================= */
 
         .cartes {
             display: flex;
@@ -55,13 +89,14 @@
             gap: 20px;
 
             padding-left: 100px;
+            padding-top: 18vh;
+            padding-bottom: 30px;
         }
 
         .carte {
             width: 170px;
             aspect-ratio: 10/11;
 
-            /* background: #B1423E; */
             background: #dba12c;
             border-radius: 10px;
 
@@ -71,6 +106,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            cursor: pointer;
         }
 
         .carte img {
@@ -86,50 +123,157 @@
             text-align: center;
             color: #F7FEEB;
 
-            /* Empêche un titre plus long d'agrandir la carte */
             height: 2.5em;
 
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
+        /* =========================
+           PAGE SCHOOL
+           ========================= */
+
+        #schoolPage {
+            display: none;
+            min-height: 100vh;
+            background: #dbd4cc;
+        }
+
+        .school-content {
+            padding-top: calc(15vh + 40px);
+            padding-left: 100px;
+            padding-right: 100px;
+            padding-bottom: 50px;
+        }
+
+        .school-image {
+            width: min(800px, 90vw);
+            max-height: 70vh;
+
+            object-fit: contain;
+
+            display: block;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+            background: #dba12c;
+
+            padding: 12px;
+            box-sizing: border-box;
+        }
+
+        .school-image:hover {
+            transform: scale(1.01);
+        }
+
+        .retour {
+            position: absolute;
+            left: 20px;
+
+            background: #3e251e;
+            border-radius: 8px;
+
+            padding: 8px 15px;
+
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .retour p {
+            margin: 0;
+            color: #dbd4cc;
+        }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>Samuel's GAMES</h1>
 
-        <div class="bouton-acces" onclick="switchMode()">
-            <p id="texte">Accès aux jeux</p>
-        </div>
-    </header>
+    <!-- =========================
+         PAGE PRINCIPALE
+         ========================= -->
 
-    <br><br><br><br><br><br><br><br>
-    <div class="cartes">
-        <div class="carte" onclick="LoupGarou()"  title="Nombre de lignes : ...">
-            <div id="loup_garou">
-                <img src="rsc/images/loup_garou.jpg" alt="Loup Garou">
+    <div id="mainPage">
+
+        <header>
+            <div class="bouton-school" onclick="openSchool()">
+                <p>School</p>
             </div>
 
-            <h3>Loup Garou</h3>
-        </div>
-        <div class="carte" onclick="Uno()">
-            <div id="loup_garou">
-                <img src="rsc/images/uno_card.png" alt="Loup Garou">
+            <h1>Samuel's GAMES</h1>
+
+            <div class="bouton-acces" onclick="switchMode()">
+                <p id="texte">Accès aux jeux</p>
+            </div>
+        </header>
+
+        <div class="cartes">
+
+            <div class="carte" onclick="LoupGarou()" title="Nombre de lignes : ...">
+                <div id="loup_garou">
+                    <img src="rsc/images/loup_garou.jpg" alt="Loup Garou">
+                </div>
+
+                <h3>Loup Garou</h3>
             </div>
 
-            <h3>UNO</h3>
+            <div class="carte" onclick="Uno()">
+                <div id="uno">
+                    <img src="rsc/images/uno_card.png" alt="UNO">
+                </div>
+
+                <h3>UNO</h3>
+            </div>
+
         </div>
+
+    </div>
+
+
+    <!-- =========================
+         PAGE SCHOOL
+         ========================= -->
+
+    <div id="schoolPage">
+
+        <header>
+            <div class="retour" onclick="closeSchool()">
+                <p>← Retour</p>
+            </div>
+
+            <h1>Samuel's SCHOOL</h1>
+        </header>
+
+        <div class="school-content">
+
+            <img
+                class="school-image"
+                src="https://cdn.unitycms.io/images/EMxPnVuTaKc8UeYSHIM8iE.jpg?op=ocroped&val=800"
+                alt="School"
+                onclick="fullscreenImage(this)"
+            >
+
+        </div>
+
     </div>
 
 
     <script>
+
+        /* =========================
+           SÉCURITÉ / ACCÈS AUX JEUX
+           ========================= */
+
         if (localStorage.getItem("secure") === null) {
             localStorage.setItem("secure", "null");
         }
 
         function mdp() {
+
             const password = "HeaC14N16Kiss";
 
             const input = prompt("Mot de passe ?");
@@ -142,17 +286,80 @@
             return false;
         }
 
+
+        /* =========================
+           ACCÈS SCHOOL
+           ========================= */
+
+        function openSchool() {
+
+            const password = prompt("Mot de passe School ?");
+
+            if (password === "INDreb3bellion") {
+
+                document.getElementById("mainPage").style.display = "none";
+                document.getElementById("schoolPage").style.display = "block";
+
+                window.scrollTo(0, 0);
+
+            } else if (password !== null) {
+
+                alert("Mot de passe incorrect.");
+
+            }
+        }
+
+
+        function closeSchool() {
+
+            document.getElementById("schoolPage").style.display = "none";
+            document.getElementById("mainPage").style.display = "block";
+
+            window.scrollTo(0, 0);
+        }
+
+
+        /* =========================
+           PLEIN ÉCRAN DE L'IMAGE
+           ========================= */
+
+        function fullscreenImage(image) {
+
+            if (image.requestFullscreen) {
+                image.requestFullscreen();
+            }
+
+            else if (image.webkitRequestFullscreen) {
+                image.webkitRequestFullscreen();
+            }
+
+            else if (image.msRequestFullscreen) {
+                image.msRequestFullscreen();
+            }
+        }
+
+
+        /* =========================
+           ACCÈS / MODES
+           ========================= */
+
         const liste = [1, 2, 3];
+
         let index = 0;
         let bouton = liste[index];
-        switcher = document.getElementById("texte");
+
+        const switcher = document.getElementById("texte");
+
         switcher.textContent = "Accès aux jeux";
 
         let info = "jeu";
 
+
         function switchMode() {
+
             if (localStorage.getItem("secure") === "true") {
-                dico = {
+
+                const dico = {
                     1: ["jeu", "Accès aux jeux"],
                     2: ["git", "Accès à GitHub"],
                     3: ["render", "Accès à Render"]
@@ -162,29 +369,51 @@
                 bouton = liste[index];
 
                 switcher.textContent = dico[bouton][1];
+
                 info = dico[bouton][0];
-                console.log("rien");
 
             }
+
             else {
+
                 mdp();
+
             }
         }
 
+
+        /* =========================
+           JEUX
+           ========================= */
 
         function LoupGarou() {
+
             if (info === "jeu") {
-                window.location.href = "https://loup-garou-p6u4.onrender.com/";
+
+                window.location.href =
+                    "https://loup-garou-p6u4.onrender.com/";
+
             } else if (info === "git") {
-                window.location.href = "https://github.com/Sam-0192/Loup_Garou";
+
+                window.location.href =
+                    "https://github.com/Sam-0192/Loup_Garou";
+
             } else {
-                window.location.href = "https://dashboard.render.com/web/srv-d9i018epbkes739rqi7g";
+
+                window.location.href =
+                    "https://dashboard.render.com/web/srv-d9i018epbkes739rqi7g";
+
             }
         }
 
+
         function Uno() {
-            console.log("UNOOOOO");
+
             alert("UNO");
+
         }
+
     </script>
+
 </body>
+```
